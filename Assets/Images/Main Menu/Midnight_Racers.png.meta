@@ -1,0 +1,598 @@
+fileFormatVersion: 2
+guid: 54798d8746045084ba0ccb3afecbea9e
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 8402915022170539620
+    second: Midnight_Racers_0
+  - first:
+      213: 5370569878702406288
+    second: Midnight_Racers_1
+  - first:
+      213: 8781797940233729936
+    second: Midnight_Racers_2
+  - first:
+      213: -5433537382177504828
+    second: Midnight_Racers_3
+  - first:
+      213: 6724472403466989630
+    second: Midnight_Racers_4
+  - first:
+      213: -2328618995176815354
+    second: Midnight_Racers_5
+  - first:
+      213: 1955837382619355194
+    second: Midnight_Racers_6
+  - first:
+      213: -1793618064140146309
+    second: Midnight_Racers_7
+  - first:
+      213: -5484625259997469545
+    second: Midnight_Racers_8
+  - first:
+      213: 2226720752840484085
+    second: Midnight_Racers_9
+  - first:
+      213: -6227230524129476805
+    second: Midnight_Racers_10
+  - first:
+      213: -4797379777870558474
+    second: Midnight_Racers_11
+  - first:
+      213: 3002537928493119810
+    second: Midnight_Racers_12
+  - first:
+      213: 9104785131390351827
+    second: Midnight_Racers_13
+  - first:
+      213: 3579926433356355258
+    second: Midnight_Racers_14
+  - first:
+      213: -2931783405408951698
+    second: Midnight_Racers_15
+  - first:
+      213: -4307558442140627571
+    second: Midnight_Racers_16
+  - first:
+      213: -6446894126809137978
+    second: Midnight_Racers_17
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Midnight_Racers_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3
+        width: 29
+        height: 76
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 466c44e21b62d9470800000000000000
+      internalID: 8402915022170539620
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Midnight_Racers_1
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 3
+        width: 29
+        height: 76
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 09a3875a9d8188a40800000000000000
+      internalID: 5370569878702406288
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Midnight_Racers_2
+      rect:
+        serializedVersion: 2
+        x: 73
+        y: 0
+        width: 53
+        height: 83
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 09773ecd2b63fd970800000000000000
+      internalID: 8781797940233729936
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Midnight_Racers_3
+      rect:
+        serializedVersion: 2
+        x: 138
+        y: 0
+        width: 33
+        height: 83
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4c1018df9823894b0800000000000000
+      internalID: -5433537382177504828
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Midnight_Racers_4
+      rect:
+        serializedVersion: 2
+        x: 171
+        y: 44
+        width: 20
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e30319ee500225d50800000000000000
+      internalID: 6724472403466989630
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Midnight_Racers_5
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 3
+        width: 29
+        height: 77
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 60542478c551fafd0800000000000000
+      internalID: -2328618995176815354
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Midnight_Racers_6
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 3
+        width: 29
+        height: 77
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a38d47dacb7842b10800000000000000
+      internalID: 1955837382619355194
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Midnight_Racers_7
+      rect:
+        serializedVersion: 2
+        x: 281
+        y: 0
+        width: 53
+        height: 83
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b79e338afd9cb17e0800000000000000
+      internalID: -1793618064140146309
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Midnight_Racers_8
+      rect:
+        serializedVersion: 2
+        x: 346
+        y: 0
+        width: 62
+        height: 83
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 79467b38262b2e3b0800000000000000
+      internalID: -5484625259997469545
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Midnight_Racers_9
+      rect:
+        serializedVersion: 2
+        x: 416
+        y: 3
+        width: 61
+        height: 76
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5f42c0f1ab6e6ee10800000000000000
+      internalID: 2226720752840484085
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Midnight_Racers_10
+      rect:
+        serializedVersion: 2
+        x: 489
+        y: 3
+        width: 53
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b3ffac2e4de6499a0800000000000000
+      internalID: -6227230524129476805
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Midnight_Racers_11
+      rect:
+        serializedVersion: 2
+        x: 624
+        y: 3
+        width: 61
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6fa026772884c6db0800000000000000
+      internalID: -4797379777870558474
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Midnight_Racers_12
+      rect:
+        serializedVersion: 2
+        x: 693
+        y: 3
+        width: 61
+        height: 73
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 249387c76582ba920800000000000000
+      internalID: 3002537928493119810
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Midnight_Racers_13
+      rect:
+        serializedVersion: 2
+        x: 762
+        y: 0
+        width: 57
+        height: 83
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3d9b7c876d1ba5e70800000000000000
+      internalID: 9104785131390351827
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Midnight_Racers_14
+      rect:
+        serializedVersion: 2
+        x: 832
+        y: 0
+        width: 57
+        height: 83
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ab69c36bf147ea130800000000000000
+      internalID: 3579926433356355258
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Midnight_Racers_15
+      rect:
+        serializedVersion: 2
+        x: 901
+        y: 3
+        width: 61
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e62e63aa6863057d0800000000000000
+      internalID: -2931783405408951698
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Midnight_Racers_16
+      rect:
+        serializedVersion: 2
+        x: 970
+        y: 0
+        width: 61
+        height: 83
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d8d09f65b6a7834c0800000000000000
+      internalID: -4307558442140627571
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Midnight_Racers_17
+      rect:
+        serializedVersion: 2
+        x: 171
+        y: 7
+        width: 20
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6cc3df2e2f70886a0800000000000000
+      internalID: -6446894126809137978
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Midnight_Racers_0: 8402915022170539620
+      Midnight_Racers_1: 5370569878702406288
+      Midnight_Racers_10: -6227230524129476805
+      Midnight_Racers_11: -4797379777870558474
+      Midnight_Racers_12: 3002537928493119810
+      Midnight_Racers_13: 9104785131390351827
+      Midnight_Racers_14: 3579926433356355258
+      Midnight_Racers_15: -2931783405408951698
+      Midnight_Racers_16: -4307558442140627571
+      Midnight_Racers_17: -6446894126809137978
+      Midnight_Racers_2: 8781797940233729936
+      Midnight_Racers_3: -5433537382177504828
+      Midnight_Racers_4: 6724472403466989630
+      Midnight_Racers_5: -2328618995176815354
+      Midnight_Racers_6: 1955837382619355194
+      Midnight_Racers_7: -1793618064140146309
+      Midnight_Racers_8: -5484625259997469545
+      Midnight_Racers_9: 2226720752840484085
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
