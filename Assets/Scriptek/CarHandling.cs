@@ -3,10 +3,9 @@ using UnityEngine;
 public class CarHandling : MonoBehaviour
 {
     [Header("Lane Movement")]
-    public float laneOffset = 2f;  // távolság a sávok között
+    public float laneOffset = 2f;
     public float laneChangeSpeed = 10f;
-    public int currentLane = 1;  // 0,1,2,3 -> 4 sávos
-
+    public int currentLane = 1;
     private Vector3 targetPosition;
 
     [Header("Speed Settings")]
@@ -47,8 +46,7 @@ public class CarHandling : MonoBehaviour
 
     void MoveToLane()
     {
-        Vector3 newPosition = Vector3.MoveTowards(transform.position, targetPosition, laneChangeSpeed * Time.deltaTime);
-        transform.position = newPosition;
+        transform.position = Vector3.MoveTowards(transform.position, targetPosition, laneChangeSpeed * Time.deltaTime);
     }
 
     void Accelerate()

@@ -1,26 +1,29 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
 public class BackgroundScroller : MonoBehaviour
 {
-    public float baseScrollSpeed = 5f; // max sebesség
-    public float resetX = -20f; // amikor újrapozicionál
-    public float startX = 20f;  // hova kerüljön vissza
-    public Transform carTransform; // a kocsi referenciája
-    public float maxCarSpeed = 100f; // állítsd be a játékod szerint
+    public Transform playerCarTransform;
+    public InfiniteBackgroundSideView backgroundVisuals;
+
+    [HideInInspector] public float finalWorldScrollSpeed;
+    public float resetX = -20f;
+    public float startX = 20f;
 
     void Update()
     {
-        // lekérjük az autó sebességét (itt csak példa, majd testre szabod)
-        float carSpeed = carTransform.GetComponent<CarHandling>().currentSpeed;
+        if (playerCarTransform == null || backgroundVisuals == null)
+        {
+            Debug.LogError("HiÃ¡nyzÃ³ referenciÃ¡k a BackgroundScroller-ben!");
+            return;
+        }
 
-        // kiszámoljuk a scroll sebességet
-        float speedFactor = Mathf.Clamp01(carSpeed / maxCarSpeed);
-        float scrollSpeed = baseScrollSpeed * speedFactor;
+        // JAVÃTÃS: Nem kell GetComponent, kÃ¶zvetlenÃ¼l az osztÃ¡lybÃ³l kÃ©rjÃ¼k el a statikus sebessÃ©get
+        float playerCarSpeed = PlayerControllerSideView.speed;
+        finalWorldScrollSpeed = playerCarSpeed;
 
-        // mozgás
-        transform.Translate(Vector3.left * scrollSpeed * Time.deltaTime);
+        transform.Translate(Vector3.left * finalWorldScrollSpeed * Time.deltaTime);
+        backgroundVisuals.SetScrollSpeed(finalWorldScrollSpeed);
 
-        // újrahelyezés ha kiért
         if (transform.position.x <= resetX)
         {
             Vector3 newPos = transform.position;
@@ -28,4 +31,5 @@ public class BackgroundScroller : MonoBehaviour
             transform.position = newPos;
         }
     }
+
 }

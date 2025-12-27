@@ -12,4 +12,9 @@ public class GarageSceneManager : MonoBehaviour
     {
         SceneManager.LoadScene("Drive Select");
     }
+
+    public void Car_Selct()
+    {
+        SceneManager.LoadScene("Car_Select");
+    }
 }

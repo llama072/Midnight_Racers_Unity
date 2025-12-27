@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff305cbe1b6fc4746becd87859c92202, type: 3}
+  m_Name: EG6
+  m_EditorClassIdentifier: 
+  carName: EG6
+  carSprite: {fileID: 2237073357778276311, guid: d3c86a87883c5d04bb866497a6ee448e, type: 3}
+  garageScale: {x: 1, y: 1, z: 1}
+  gameScale: {x: 0.95, y: 0.95, z: 1}
+  frontWheelX: 2
+  backWheelX: -2.1
+  wheelsY: -0.6
+  carBodyY: 0.25
