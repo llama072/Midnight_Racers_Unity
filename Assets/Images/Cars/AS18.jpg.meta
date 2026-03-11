@@ -116,11 +116,11 @@ TextureImporter:
       name: AS18_0
       rect:
         serializedVersion: 2
-        x: 60
-        y: 33
-        width: 691
-        height: 213
-      alignment: 7
+        x: 62
+        y: 51
+        width: 687
+        height: 193
+      alignment: 9
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 

@@ -116,11 +116,11 @@ TextureImporter:
       name: Accord_0
       rect:
         serializedVersion: 2
-        x: 83
-        y: 70
-        width: 341
-        height: 104
-      alignment: 7
+        x: 84
+        y: 72
+        width: 339
+        height: 101
+      alignment: 9
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 

@@ -116,10 +116,10 @@ TextureImporter:
       name: EG6 (1)_0
       rect:
         serializedVersion: 2
-        x: 84
-        y: 67
-        width: 312
-        height: 107
+        x: 85
+        y: 69
+        width: 310
+        height: 104
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

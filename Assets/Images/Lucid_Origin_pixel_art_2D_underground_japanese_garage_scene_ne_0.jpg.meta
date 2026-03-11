@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 0b5937213d87b9b46b0f94177999d529
+guid: b156b5f9a33c9ef4082a1743b7c32ef7
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -6638115009870700644
-    second: Bmw_E30_0
+      213: 223328661720831061
+    second: Lucid_Origin_pixel_art_2D_underground_japanese_garage_scene_ne_0_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -46,7 +46,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -113,23 +113,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Bmw_E30_0
+      name: Lucid_Origin_pixel_art_2D_underground_japanese_garage_scene_ne_0_0
       rect:
         serializedVersion: 2
-        x: 714
-        y: 208
-        width: 925
-        height: 288
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 0
+        y: 0
+        width: 4096
+        height: 2340
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: c9fd77a919da0e3a0800000000000000
-      internalID: -6638115009870700644
+      spriteID: 554980e0c3c691300800000000000000
+      internalID: 223328661720831061
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Bmw_E30_0: -6638115009870700644
+      Lucid_Origin_pixel_art_2D_underground_japanese_garage_scene_ne_0_0: 223328661720831061
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

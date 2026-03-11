@@ -137,21 +137,17 @@ public class PlayerControllerSideView : MonoBehaviour
 
         if (Mathf.Abs(distanceX) < collisionThreshold)
         {
-            if (distanceX > 0) // Előtted lévő AI
+            if (distanceX > 0) 
             {
-                // 1. A sebességedet az AI-hoz igazítjuk (lassulsz)
                 speed = Mathf.Lerp(speed, script.aiSpeed * 0.7f, Time.deltaTime * 10f);
                 
-                // 2. Az AI-t toljuk el előre a világban, hogy ne legyetek egymásban
                 float overlap = collisionThreshold - distanceX;
                 script.aiWorldDistance += overlap + 0.05f; 
             }
-            else // Mögötted lévő AI
+            else 
             {
-                // 1. Kapsz egy kis sebességlöketet
                 speed = Mathf.MoveTowards(speed, speed + (pushForce / 50f), 2f);
                 
-                // 2. Az AI-t toljuk hátra a világban (ő lassul le hozzád)
                 float overlap = collisionThreshold - Mathf.Abs(distanceX);
                 script.aiWorldDistance -= overlap + 0.05f;
                 script.aiSpeed = Mathf.Lerp(script.aiSpeed, speed * 0.8f, Time.deltaTime * 5f);

@@ -29,27 +29,34 @@ public class AICarSpawner : MonoBehaviour
 
     void SpawnAICar()
     {
-        // Ellenőrizzük, hogy vannak-e autók a listában
         if (aiCarPrefabs == null || aiCarPrefabs.Length == 0) return;
 
         int randomLane = Random.Range(0, laneYPositions.Length);
         if (IsAreaOccupied(spawnX, laneYPositions[randomLane])) return;
 
-        // VÉLETLENSZERŰ választás a listából:
         int randomCarIndex = Random.Range(0, aiCarPrefabs.Length);
-        GameObject newCar = Instantiate(aiCarPrefabs[randomCarIndex]);
 
-        newCar.transform.SetParent(null);
+        // 1. LÉPÉS: A Spawner (this.transform) alá hozzuk létre az autót!
+        GameObject newCar = Instantiate(aiCarPrefabs[randomCarIndex], this.transform);
 
-        // Méret fixálás (ahogy korábban kérted)
+        // 2. LÉPÉS: TÖRÖLD VAGY KOMMENTELD KI ezt a sort:
+        // newCar.transform.SetParent(null); 
+
         RectTransform rt = newCar.GetComponent<RectTransform>();
         if (rt != null)
         {
             rt.sizeDelta = new Vector2(7f, 2.3f);
+
+            // 3. LÉPÉS: UI esetén localPosition-t érdemes használni a szülőn belül
+            rt.localPosition = new Vector3(spawnX, laneYPositions[randomLane], 0);
+        }
+        else
+        {
+            // Ha nem UI, akkor sima localPosition
+            newCar.transform.localPosition = new Vector3(spawnX, laneYPositions[randomLane], 0);
         }
 
         newCar.transform.localScale = new Vector3(1f, 1f, 1f);
-        newCar.transform.position = new Vector3(spawnX, laneYPositions[randomLane], 0);
 
         AICar ai = newCar.GetComponent<AICar>();
         if (ai != null)

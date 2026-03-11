@@ -5,12 +5,16 @@ public class MainMenuSceneManager : MonoBehaviour
 {
     public void Play()
     {
-        SceneManager.LoadScene("Garage");
+        SceneTransitionManager.Instance.LoadScene("Garage",
+            SceneTransitionManager.TransitionType.LoadingScreen);
     }
+
     public void Settings()
     {
-        SceneManager.LoadScene("Settings");
+        SceneTransitionManager.Instance.LoadScene("Settings");
+
     }
+
     public void Exit()
     {
         Application.Quit();
