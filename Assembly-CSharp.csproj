@@ -87,6 +87,7 @@
     <Compile Include="Assets\Scriptek\WheelSpin.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexShakeA.cs" />
     <Compile Include="Assets\Scriptek\WorldProgress.cs" />
+    <Compile Include="Assets\Scriptek\MusicManager.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01_UGUI.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\SimpleScript.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark04.cs" />
@@ -96,6 +97,7 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TextMeshSpawner.cs" />
     <Compile Include="Assets\Scriptek\SceneChanger\SettingsSceneManager.cs" />
+    <Compile Include="Assets\Scriptek\Garagenavigationmanager.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\CameraController.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark03.cs" />
     <Compile Include="Assets\Scriptek\SceneChanger\GarageSceneManager.cs" />
@@ -105,6 +107,7 @@
     <Compile Include="Assets\Scriptek\InfiniteBackground.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexColorCycler.cs" />
     <Compile Include="Assets\Scriptek\SceneTransitionManager.cs" />
+    <Compile Include="Assets\Scriptek\SceneMusicConfig.cs" />
     <Compile Include="Assets\Scriptek\CarHandling.cs" />
     <Compile Include="Assets\Scriptek\BackgroundScroller.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\ObjectSpin.cs" />

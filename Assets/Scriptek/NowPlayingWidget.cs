@@ -5,22 +5,9 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using TMPro;
 
-/// <summary>
-/// NOW PLAYING WIDGET v2 — Hover interakcióval
-/// </summary>
 public class NowPlayingWidget : MonoBehaviour,
     IPointerEnterHandler, IPointerExitHandler
 {
-    [Header("Zeneszámok listája")]
-    [SerializeField]
-    private List<TrackInfo> tracks = new List<TrackInfo>
-    {
-        new TrackInfo { title = "Zoom Noir",   artist = "i9incher"  },
-        new TrackInfo { title = "ugh",         artist = "DJ Kuroneko"},
-        new TrackInfo { title = "u lose",      artist = "Dazegxd"   },
-        new TrackInfo { title = "stray - VIP", artist = "DJ Kuroneko"},
-    };
-
     [Header("Vinyl")]
     [SerializeField] private Sprite vinylSprite;
     [SerializeField] private float vinylRotateSpeed = 45f;
@@ -51,13 +38,12 @@ public class NowPlayingWidget : MonoBehaviour,
     private Vector2 visiblePos;
 
     private bool isPlaying = true;
-
-    private int currentTrack = 0;
     private bool isHovered = false;
     private bool isVisible = false;
     private Coroutine slideCoroutine;
     private Coroutine holdCoroutine;
 
+    // Visszafelé kompatibilitás — már nem kell manuálisan tölteni
     [System.Serializable]
     public class TrackInfo { public string title; public string artist; }
 
@@ -73,7 +59,6 @@ public class NowPlayingWidget : MonoBehaviour,
         widgetRect = gameObject.AddComponent<RectTransform>();
         canvasGroup = gameObject.AddComponent<CanvasGroup>();
 
-        // Láthatatlan Image a root-on — nélküle a hover eventek nem érnek ide
         var rootImg = gameObject.AddComponent<Image>();
         rootImg.color = new Color(0, 0, 0, 0);
         rootImg.raycastTarget = true;
@@ -91,7 +76,7 @@ public class NowPlayingWidget : MonoBehaviour,
         var bg = MakeGO("BG", transform);
         var bgImg = bg.AddComponent<Image>();
         bgImg.color = new Color(0.04f, 0.06f, 0.18f, 0.93f);
-        bgImg.raycastTarget = true;  // ← ez fogja az egér eventeket
+        bgImg.raycastTarget = true;
         Stretch(bg.GetComponent<RectTransform>());
         bg.AddComponent<Outline>().effectColor = new Color(0f, 0.7f, 1f, 0.45f);
 
@@ -129,9 +114,10 @@ public class NowPlayingWidget : MonoBehaviour,
         artistText = MakeTMP("Artist", transform, new Vector2(tx, -18f), new Vector2(-tx - 8f, 16f), 10f, new Color(0.55f, 0.65f, 0.85f, 0.85f));
         artistText.overflowMode = TextOverflowModes.Ellipsis;
 
-        UpdateTrackDisplay();
+        // Kezdeti szöveg a MusicManager-ből
+        RefreshFromManager();
 
-        // Kontroll gombok — jobb oldalon
+        // Kontroll gombok
         var ctrlGO = MakeGO("Controls", transform);
         controlsGroup = ctrlGO.AddComponent<CanvasGroup>();
         Stretch(ctrlGO.GetComponent<RectTransform>());
@@ -140,7 +126,6 @@ public class NowPlayingWidget : MonoBehaviour,
         var playPause = MakeControlBtn("PlayPause", ctrlGO.transform, new Vector2(-52f, 0f), "||");
         var next = MakeControlBtn("Next", ctrlGO.transform, new Vector2(-16f, 0f), ">>");
 
-        // Jobb oldali horgony mindháromra
         foreach (var btn in new[] { prev, playPause, next })
         {
             var r = btn.GetComponent<RectTransform>();
@@ -149,12 +134,45 @@ public class NowPlayingWidget : MonoBehaviour,
             r.pivot = new Vector2(1f, 0.5f);
         }
 
-        // PlayPause gomb szöveg referencia tárolása
         playPauseLbl = playPause.GetComponentInChildren<TextMeshProUGUI>();
 
-        prev.onClick.AddListener(PrevTrack);
-        next.onClick.AddListener(NextTrack);
-        playPause.onClick.AddListener(TogglePlayPause);
+        // ✅ MusicManager-rel szinkronizált gombok
+        prev.onClick.AddListener(() => MusicManager.Instance?.SkipToPrev());
+        next.onClick.AddListener(() => MusicManager.Instance?.SkipToNext());
+        playPause.onClick.AddListener(() =>
+        {
+            if (MusicManager.Instance != null)
+            {
+                MusicManager.Instance.TogglePause();
+                bool playing = MusicManager.Instance.IsPlaying;
+                if (playPauseLbl != null)
+                    playPauseLbl.text = playing ? "||" : ">";
+            }
+        });
+    }
+
+    // ✅ MusicManager hívja ezt zeneváltáskor
+    public void RefreshTrack(string title, string artist)
+    {
+        if (titleText != null) titleText.text = title;
+        if (artistText != null) artistText.text = artist;
+    }
+
+    // Kezdeti betöltéskor ha már szól valami
+    private void RefreshFromManager()
+    {
+        if (MusicManager.Instance == null) return;
+        var track = MusicManager.Instance.CurrentTrack;
+        if (track != null)
+        {
+            if (titleText != null) titleText.text = track.title;
+            if (artistText != null) artistText.text = track.artist;
+        }
+        else
+        {
+            if (titleText != null) titleText.text = "—";
+            if (artistText != null) artistText.text = "—";
+        }
     }
 
     public void OnPointerEnter(PointerEventData _)
@@ -162,7 +180,6 @@ public class NowPlayingWidget : MonoBehaviour,
         isHovered = true;
         if (slideCoroutine != null) { StopCoroutine(slideCoroutine); slideCoroutine = null; }
         if (holdCoroutine != null) { StopCoroutine(holdCoroutine); holdCoroutine = null; }
-        // Smooth visszacsúszás a jelenlegi pozícióból
         slideCoroutine = StartCoroutine(SlideTo(widgetRect.anchoredPosition, visiblePos, slideInDuration, true));
         StartCoroutine(FadeControls(1f));
     }
@@ -171,42 +188,21 @@ public class NowPlayingWidget : MonoBehaviour,
     {
         isHovered = false;
         StartCoroutine(FadeControls(0f));
-        // Rövid várakozás után visszacsúszik, majd loopol
         holdCoroutine = StartCoroutine(HoldThenHide());
-    }
-
-    private void NextTrack() { currentTrack = (currentTrack + 1) % tracks.Count; UpdateTrackDisplay(); }
-    private void PrevTrack() { currentTrack = (currentTrack - 1 + tracks.Count) % tracks.Count; UpdateTrackDisplay(); }
-
-    private void TogglePlayPause()
-    {
-        isPlaying = !isPlaying;
-        if (playPauseLbl != null)
-            playPauseLbl.text = isPlaying ? "||" : ">";
-    }
-
-    private void UpdateTrackDisplay()
-    {
-        if (tracks == null || tracks.Count == 0) return;
-        var t = tracks[currentTrack];
-        if (titleText != null) titleText.text = t.title;
-        if (artistText != null) artistText.text = t.artist;
     }
 
     private IEnumerator ShowSequence(float delay)
     {
         yield return new WaitForSeconds(delay);
 
-        while (true)  // végtelen loop, a feltétel belül kezelt
+        while (true)
         {
-            // Slide IN
             widgetRect.anchoredPosition = hiddenPos;
             slideCoroutine = StartCoroutine(SlideTo(hiddenPos, visiblePos, slideInDuration, true));
             yield return slideCoroutine;
             slideCoroutine = null;
             isVisible = true;
 
-            // Hold — de ha hover megszakítja, várunk amíg az pointer exit újraindítja
             if (!isHovered)
             {
                 holdCoroutine = StartCoroutine(HoldThenHide());
@@ -215,7 +211,6 @@ public class NowPlayingWidget : MonoBehaviour,
             }
             else
             {
-                // Hover van — várunk amíg elmegy az egér és HoldThenHide lefut
                 while (isHovered) yield return null;
                 if (holdCoroutine != null)
                 {
@@ -225,7 +220,6 @@ public class NowPlayingWidget : MonoBehaviour,
             }
 
             isVisible = false;
-
             if (!loop) yield break;
             yield return new WaitForSeconds(loopInterval);
         }
@@ -234,7 +228,6 @@ public class NowPlayingWidget : MonoBehaviour,
     private IEnumerator HoldThenHide()
     {
         yield return new WaitForSeconds(holdDuration);
-
         if (!isHovered)
         {
             slideCoroutine = StartCoroutine(SlideTo(visiblePos, hiddenPos, slideOutDuration, false));
@@ -279,17 +272,10 @@ public class NowPlayingWidget : MonoBehaviour,
 
     private void Update()
     {
-        if (vinylRect != null && isPlaying)
+        if (vinylRect != null && isPlaying && (MusicManager.Instance == null || MusicManager.Instance.IsPlaying))
             vinylRect.Rotate(0f, 0f, -vinylRotateSpeed * Time.deltaTime);
     }
 
-    public void RefreshTrack(string title, string artist)
-    {
-        tracks[currentTrack] = new TrackInfo { title = title, artist = artist };
-        UpdateTrackDisplay();
-    }
-
-    // ── UI helpers ──────────────────────────────────────────
     private GameObject MakeGO(string name, Transform parent)
     {
         var go = new GameObject(name);
