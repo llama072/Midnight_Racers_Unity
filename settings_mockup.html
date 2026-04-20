@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+<meta charset="UTF-8">
+<title>Midnight Racers — Settings Mockup</title>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html, body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: #050810;
+    font-family: 'VT323', monospace;
+    color: #e8e8f0;
+    image-rendering: pixelated;
+    user-select: none;
+  }
+
+  /* Background — night city look */
+  .scene {
+    position: fixed;
+    inset: 0;
+    background:
+      radial-gradient(ellipse at 70% 20%, rgba(183, 148, 246, 0.08) 0%, transparent 50%),
+      radial-gradient(ellipse at 20% 80%, rgba(0, 212, 255, 0.06) 0%, transparent 50%),
+      linear-gradient(180deg, #0a0e1f 0%, #1a0f2e 50%, #0d1126 100%);
+  }
+
+  /* Stars */
+  .stars {
+    position: absolute;
+    inset: 0;
+    background-image:
+      radial-gradient(1px 1px at 20% 15%, white, transparent),
+      radial-gradient(1px 1px at 60% 25%, white, transparent),
+      radial-gradient(1px 1px at 80% 10%, #b794f6, transparent),
+      radial-gradient(1px 1px at 30% 30%, white, transparent),
+      radial-gradient(1px 1px at 90% 35%, white, transparent),
+      radial-gradient(1px 1px at 45% 8%, white, transparent),
+      radial-gradient(1px 1px at 15% 40%, #00d4ff, transparent),
+      radial-gradient(1px 1px at 75% 45%, white, transparent);
+    opacity: 0.6;
+  }
+
+  /* City skyline silhouette */
+  .skyline {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 35%;
+    background:
+      linear-gradient(180deg, transparent 0%, rgba(10, 14, 31, 0.4) 30%, rgba(10, 14, 31, 0.95) 100%);
+    pointer-events: none;
+  }
+
+  .skyline::before {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 60%;
+    background-image:
+      linear-gradient(90deg,
+        transparent 0%, transparent 5%,
+        #0a0e1f 5%, #0a0e1f 8%,
+        transparent 8%, transparent 12%,
+        #0a0e1f 12%, #0a0e1f 16%,
+        transparent 16%, transparent 22%,
+        #0a0e1f 22%, #0a0e1f 28%,
+        transparent 28%, transparent 32%,
+        #0a0e1f 32%, #0a0e1f 38%,
+        transparent 38%, transparent 44%,
+        #0a0e1f 44%, #0a0e1f 50%,
+        transparent 50%, transparent 56%,
+        #0a0e1f 56%, #0a0e1f 60%,
+        transparent 60%, transparent 66%,
+        #0a0e1f 66%, #0a0e1f 72%,
+        transparent 72%, transparent 78%,
+        #0a0e1f 78%, #0a0e1f 84%,
+        transparent 84%, transparent 90%,
+        #0a0e1f 90%, #0a0e1f 100%
+      );
+    opacity: 0.85;
+  }
+
+  /* CRT scanlines */
+  .scanlines {
+    position: fixed;
+    inset: 0;
+    background: repeating-linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.15) 0px,
+      rgba(0, 0, 0, 0.15) 1px,
+      transparent 1px,
+      transparent 3px
+    );
+    pointer-events: none;
+    z-index: 100;
+  }
+
+  .vignette {
+    position: fixed;
+    inset: 0;
+    background: radial-gradient(ellipse at center, transparent 50%, rgba(0,0,0,0.6) 100%);
+    pointer-events: none;
+    z-index: 99;
+  }
+
+  /* Main container */
+  .container {
+    position: relative;
+    z-index: 10;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 32px 48px 24px;
+  }
+
+  /* Header */
+  .header {
+    display: flex;
+    align-items: baseline;
+    gap: 24px;
+    margin-bottom: 24px;
+    border-bottom: 2px solid rgba(183, 148, 246, 0.3);
+    padding-bottom: 12px;
+  }
+
+  .header h1 {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 28px;
+    color: #ffffff;
+    text-shadow: 0 0 12px rgba(183, 148, 246, 0.6), 2px 2px 0 #1a0f2e;
+    letter-spacing: 2px;
+  }
+
+  .header .subtitle {
+    font-family: 'VT323', monospace;
+    font-size: 22px;
+    color: #b794f6;
+    margin-left: auto;
+    text-shadow: 0 0 8px rgba(183, 148, 246, 0.5);
+  }
+
+  .header .subtitle .blink {
+    animation: blink 1s steps(2) infinite;
+  }
+
+  @keyframes blink { 0%, 50% { opacity: 1; } 51%, 100% { opacity: 0; } }
+
+  /* Body — categories + panel */
+  .body {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    gap: 32px;
+    min-height: 0;
+  }
+
+  /* Categories sidebar */
+  .categories {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding-top: 12px;
+  }
+
+  .category {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 14px;
+    padding: 14px 16px;
+    color: #6b6f8a;
+    cursor: pointer;
+    transition: all 0.15s;
+    border-left: 3px solid transparent;
+    letter-spacing: 1px;
+    position: relative;
+  }
+
+  .category:hover {
+    color: #c0c4e0;
+    border-left-color: rgba(183, 148, 246, 0.4);
+    background: rgba(183, 148, 246, 0.05);
+  }
+
+  .category.active {
+    color: #ffffff;
+    border-left-color: #b794f6;
+    background: linear-gradient(90deg, rgba(183, 148, 246, 0.2) 0%, transparent 100%);
+    text-shadow: 0 0 8px rgba(183, 148, 246, 0.6);
+  }
+
+  .category.active::before {
+    content: '▸';
+    position: absolute;
+    left: -16px;
+    color: #b794f6;
+    animation: pulse 1.2s ease-in-out infinite;
+  }
+
+  @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+
+  /* Settings panel */
+  .panel {
+    background: rgba(10, 14, 31, 0.6);
+    border: 1px solid rgba(183, 148, 246, 0.25);
+    padding: 28px 36px;
+    overflow-y: auto;
+    backdrop-filter: blur(2px);
+    box-shadow:
+      inset 0 0 40px rgba(183, 148, 246, 0.05),
+      0 0 30px rgba(0, 0, 0, 0.5);
+  }
+
+  .panel-header {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 16px;
+    color: #b794f6;
+    margin-bottom: 24px;
+    padding-bottom: 12px;
+    border-bottom: 1px dashed rgba(183, 148, 246, 0.3);
+    letter-spacing: 2px;
+  }
+
+  .setting {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    padding: 14px 12px;
+    gap: 24px;
+    transition: all 0.15s;
+    border-left: 3px solid transparent;
+  }
+
+  .setting:hover, .setting.focused {
+    background: rgba(183, 148, 246, 0.08);
+    border-left-color: #b794f6;
+  }
+
+  .setting-label {
+    font-size: 22px;
+    color: #d8dbf0;
+    letter-spacing: 1px;
+  }
+
+  .setting-control {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 11px;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  /* Dropdown style: < VALUE > */
+  .dropdown {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    min-width: 220px;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.4);
+    padding: 8px 14px;
+    border: 1px solid rgba(183, 148, 246, 0.3);
+  }
+
+  .dropdown .arrow {
+    color: #b794f6;
+    cursor: pointer;
+    transition: all 0.1s;
+    padding: 0 6px;
+  }
+
+  .dropdown .arrow:hover {
+    color: #ffffff;
+    text-shadow: 0 0 8px #b794f6;
+    transform: scale(1.2);
+  }
+
+  .dropdown .value {
+    flex: 1;
+    text-align: center;
+    color: #ffffff;
+    letter-spacing: 1.5px;
+  }
+
+  /* Toggle: [ ON ] / [ OFF ] */
+  .toggle {
+    cursor: pointer;
+    padding: 8px 18px;
+    border: 1px solid rgba(183, 148, 246, 0.3);
+    background: rgba(0, 0, 0, 0.4);
+    transition: all 0.15s;
+    min-width: 90px;
+    text-align: center;
+    letter-spacing: 1.5px;
+  }
+
+  .toggle.on {
+    color: #00ff9d;
+    border-color: rgba(0, 255, 157, 0.5);
+    background: rgba(0, 255, 157, 0.1);
+    text-shadow: 0 0 8px rgba(0, 255, 157, 0.6);
+  }
+
+  .toggle.off {
+    color: #ff5577;
+    border-color: rgba(255, 85, 119, 0.4);
+    background: rgba(255, 85, 119, 0.08);
+  }
+
+  .toggle:hover { transform: scale(1.04); }
+
+  /* Segmented volume bar */
+  .volume-bar {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: rgba(0, 0, 0, 0.4);
+    padding: 8px 14px;
+    border: 1px solid rgba(183, 148, 246, 0.3);
+  }
+
+  .segments {
+    display: flex;
+    gap: 3px;
+  }
+
+  .seg {
+    width: 14px;
+    height: 18px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(183, 148, 246, 0.25);
+    cursor: pointer;
+    transition: all 0.1s;
+  }
+
+  .seg:hover {
+    border-color: #b794f6;
+  }
+
+  .seg.filled {
+    background: linear-gradient(180deg, #d4b3ff 0%, #b794f6 100%);
+    border-color: #b794f6;
+    box-shadow: 0 0 6px rgba(183, 148, 246, 0.6);
+  }
+
+  .seg.filled.high {
+    background: linear-gradient(180deg, #ff8fab 0%, #b794f6 100%);
+  }
+
+  .volume-percent {
+    color: #b794f6;
+    min-width: 40px;
+    text-align: right;
+  }
+
+  /* Footer hints */
+  .footer {
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+    padding-top: 16px;
+    border-top: 1px solid rgba(183, 148, 246, 0.2);
+    margin-top: 16px;
+  }
+
+  .hint {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 10px;
+    color: #6b6f8a;
+    letter-spacing: 1px;
+  }
+
+  .hint .key {
+    color: #b794f6;
+    margin-right: 8px;
+    text-shadow: 0 0 4px rgba(183, 148, 246, 0.5);
+  }
+
+  /* Apply button bar — appears when changes pending */
+  .apply-bar {
+    display: flex;
+    gap: 12px;
+    margin-top: 20px;
+    padding-top: 16px;
+    border-top: 1px dashed rgba(183, 148, 246, 0.3);
+    justify-content: flex-end;
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+
+  .apply-bar.show { opacity: 1; }
+
+  .btn {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 11px;
+    padding: 10px 20px;
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(183, 148, 246, 0.4);
+    color: #d8dbf0;
+    cursor: pointer;
+    transition: all 0.15s;
+    letter-spacing: 1.5px;
+  }
+
+  .btn:hover {
+    background: rgba(183, 148, 246, 0.2);
+    color: #ffffff;
+    text-shadow: 0 0 8px rgba(183, 148, 246, 0.6);
+  }
+
+  .btn.primary {
+    background: rgba(183, 148, 246, 0.25);
+    border-color: #b794f6;
+    color: #ffffff;
+  }
+
+  .btn.primary:hover {
+    background: rgba(183, 148, 246, 0.4);
+    box-shadow: 0 0 12px rgba(183, 148, 246, 0.5);
+  }
+
+  /* Scrollbar */
+  .panel::-webkit-scrollbar { width: 8px; }
+  .panel::-webkit-scrollbar-track { background: rgba(0,0,0,0.3); }
+  .panel::-webkit-scrollbar-thumb { background: rgba(183, 148, 246, 0.4); }
+  .panel::-webkit-scrollbar-thumb:hover { background: rgba(183, 148, 246, 0.7); }
+
+  /* Hidden panels */
+  .panel-content { display: none; }
+  .panel-content.active { display: block; }
+
+  /* Rebind row */
+  .rebind-row {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    padding: 10px 12px;
+    font-size: 18px;
+  }
+  .rebind-row .key-bind {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 11px;
+    background: rgba(0,0,0,0.4);
+    border: 1px solid rgba(183, 148, 246, 0.3);
+    padding: 6px 12px;
+    color: #b794f6;
+    cursor: pointer;
+  }
+  .rebind-row .key-bind:hover {
+    background: rgba(183, 148, 246, 0.2);
+    color: #fff;
+  }
+</style>
+</head>
+<body>
+  <div class="scene">
+    <div class="stars"></div>
+    <div class="skyline"></div>
+  </div>
+  <div class="vignette"></div>
+  <div class="scanlines"></div>
+
+  <div class="container">
+    <!-- Header -->
+    <div class="header">
+      <h1>SETTINGS</h1>
+      <div class="subtitle">// SYSTEM CONFIG <span class="blink">_</span></div>
+    </div>
+
+    <!-- Body -->
+    <div class="body">
+      <!-- Sidebar -->
+      <div class="categories" id="categories">
+        <div class="category active" data-cat="display">DISPLAY</div>
+        <div class="category" data-cat="audio">AUDIO</div>
+        <div class="category" data-cat="controls">CONTROLS</div>
+        <div class="category" data-cat="gameplay">GAMEPLAY</div>
+        <div class="category" data-cat="language">LANGUAGE</div>
+      </div>
+
+      <!-- Panel -->
+      <div class="panel">
+
+        <!-- DISPLAY -->
+        <div class="panel-content active" data-panel="display">
+          <div class="panel-header">▸ DISPLAY SETTINGS</div>
+
+          <div class="setting">
+            <div class="setting-label">Resolution</div>
+            <div class="setting-control">
+              <div class="dropdown" data-options='["1280 x 720","1600 x 900","1920 x 1080","2560 x 1440","3840 x 2160"]' data-index="2">
+                <span class="arrow">◄</span>
+                <span class="value">1920 x 1080</span>
+                <span class="arrow">►</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="setting">
+            <div class="setting-label">Window Mode</div>
+            <div class="setting-control">
+              <div class="dropdown" data-options='["FULLSCREEN","BORDERLESS","WINDOWED"]' data-index="0">
+                <span class="arrow">◄</span>
+                <span class="value">FULLSCREEN</span>
+                <span class="arrow">►</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="setting">
+            <div class="setting-label">VSync</div>
+            <div class="setting-control"><div class="toggle on">ON</div></div>
+          </div>
+
+          <div class="setting">
+            <div class="setting-label">FPS Cap</div>
+            <div class="setting-control">
+              <div class="dropdown" data-options='["30","60","120","144","240","UNLIMITED"]' data-index="1">
+                <span class="arrow">◄</span>
+                <span class="value">60</span>
+                <span class="arrow">►</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="setting">
+            <div class="setting-label">Pixel Perfect Camera</div>
+            <div class="setting-control"><div class="toggle on">ON</div></div>
+          </div>
+
+          <div class="setting">
+            <div class="setting-label">Brightness</div>
+            <div class="setting-control"><div class="volume-bar" data-value="6"></div></div>
+          </div>
+
+          <div class="apply-bar show">
+            <button class="btn">RESET</button>
+            <button class="btn primary">APPLY</button>
+          </div>
+        </div>
+
+        <!-- AUDIO -->
+        <div class="panel-content" data-panel="audio">
+          <div class="panel-header">▸ AUDIO SETTINGS</div>
+
+          <div class="setting">
+            <div class="setting-label">Master Volume</div>
+            <div class="setting-control"><div class="volume-bar" data-value="8"></div></div>
+          </div>
+
+          <div class="setting">
+            <div class="setting-label">Music</div>
+            <div class="setting-control"><div class="volume-bar" data-value="5"></div></div>
+          </div>
+
+          <div class="setting">
+            <div class="setting-label">SFX</div>
+            <div class="setting-control"><div class="volume-bar" data-value="7"></div></div>
+          </div>
+
+          <div class="setting">
+            <div class="setting-label">Engine Sounds</div>
+            <div class="setting-control"><div class="volume-bar" data-value="9"></div></div>
+          </div>
+
+          <div class="setting">
+            <div class="setting-label">UI Sounds</div>
+            <div class="setting-control"><div class="volume-bar" data-value="6"></div></div>
+          </div>
+
+          <div class="setting">
+            <div class="setting-label">Mute When Unfocused</div>
+            <div class="setting-control"><div class="toggle off">OFF</div></div>
+          </div>
+
+          <div class="apply-bar show">
+            <button class="btn">RESET</button>
+            <button class="btn primary">APPLY</button>
+          </div>
+        </div>
+
+        <!-- CONTROLS -->
+        <div class="panel-content" data-panel="controls">
+          <div class="panel-header">▸ CONTROLS</div>
+
+          <div class="setting">
+            <div class="setting-label">Steering Sensitivity</div>
+            <div class="setting-control"><div class="volume-bar" data-value="5"></div></div>
+          </div>
+
+          <div class="setting">
+            <div class="setting-label">Invert Camera</div>
+            <div class="setting-control"><div class="toggle off">OFF</div></div>
+          </div>
+
+          <div class="setting">
+            <div class="setting-label">Controller Vibration</div>
+            <div class="setting-control"><div class="toggle on">ON</div></div>
+          </div>
+
+          <div class="panel-header" style="margin-top: 24px; font-size: 13px;">▸ KEY BINDINGS</div>
+
+          <div class="rebind-row">
+            <div>Accelerate</div>
+            <div class="key-bind">W</div>
+          </div>
+          <div class="rebind-row">
+            <div>Brake / Reverse</div>
+            <div class="key-bind">S</div>
+          </div>
+          <div class="rebind-row">
+            <div>Steer Left</div>
+            <div class="key-bind">A</div>
+          </div>
+          <div class="rebind-row">
+            <div>Steer Right</div>
+            <div class="key-bind">D</div>
+          </div>
+          <div class="rebind-row">
+            <div>Handbrake</div>
+            <div class="key-bind">SPACE</div>
+          </div>
+          <div class="rebind-row">
+            <div>Nitrous</div>
+            <div class="key-bind">SHIFT</div>
+          </div>
+          <div class="rebind-row">
+            <div>Look Back</div>
+            <div class="key-bind">C</div>
+          </div>
+
+          <div class="apply-bar show">
+            <button class="btn">RESET</button>
+            <button class="btn primary">APPLY</button>
+          </div>
+        </div>
+
+        <!-- GAMEPLAY -->
+        <div class="panel-content" data-panel="gameplay">
+          <div class="panel-header">▸ GAMEPLAY</div>
+
+          <div class="setting">
+            <div class="setting-label">Difficulty</div>
+            <div class="setting-control">
+              <div class="dropdown" data-options='["EASY","NORMAL","HARD","SIMULATION"]' data-index="1">
+                <span class="arrow">◄</span>
+                <span class="value">NORMAL</span>
+                <span class="arrow">►</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="setting">
+            <div class="setting-label">Speed Unit</div>
+            <div class="setting-control">
+              <div class="dropdown" data-options='["KM/H","MPH"]' data-index="0">
+                <span class="arrow">◄</span>
+                <span class="value">KM/H</span>
+                <span class="arrow">►</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="setting">
+            <div class="setting-label">Default Camera</div>
+            <div class="setting-control">
+              <div class="dropdown" data-options='["CHASE","HOOD","COCKPIT","BUMPER"]' data-index="0">
+                <span class="arrow">◄</span>
+                <span class="value">CHASE</span>
+                <span class="arrow">►</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="setting">
+            <div class="setting-label">HUD Visibility</div>
+            <div class="setting-control"><div class="toggle on">ON</div></div>
+          </div>
+
+          <div class="setting">
+            <div class="setting-label">ABS Assist</div>
+            <div class="setting-control"><div class="toggle on">ON</div></div>
+          </div>
+
+          <div class="setting">
+            <div class="setting-label">Traction Control</div>
+            <div class="setting-control"><div class="toggle on">ON</div></div>
+          </div>
+
+          <div class="setting">
+            <div class="setting-label">Auto Brake</div>
+            <div class="setting-control"><div class="toggle off">OFF</div></div>
+          </div>
+
+          <div class="apply-bar show">
+            <button class="btn">RESET</button>
+            <button class="btn primary">APPLY</button>
+          </div>
+        </div>
+
+        <!-- LANGUAGE -->
+        <div class="panel-content" data-panel="language">
+          <div class="panel-header">▸ LANGUAGE</div>
+
+          <div class="setting">
+            <div class="setting-label">Language</div>
+            <div class="setting-control">
+              <div class="dropdown" data-options='["ENGLISH","MAGYAR","DEUTSCH","ESPAÑOL","日本語"]' data-index="0">
+                <span class="arrow">◄</span>
+                <span class="value">ENGLISH</span>
+                <span class="arrow">►</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="setting">
+            <div class="setting-label">Subtitles</div>
+            <div class="setting-control"><div class="toggle on">ON</div></div>
+          </div>
+
+          <div class="apply-bar show">
+            <button class="btn">RESET</button>
+            <button class="btn primary">APPLY</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+      <div class="hint"><span class="key">W▲ S▼</span>NAVIGATE</div>
+      <div class="hint"><span class="key">A◄ D►</span>CHANGE</div>
+      <div class="hint"><span class="key">ENTER</span>SELECT</div>
+      <div class="hint"><span class="key">TAB</span>NEXT TAB</div>
+      <div class="hint"><span class="key">ESC</span>BACK</div>
+    </div>
+  </div>
+
+<script>
+  // Build volume bars
+  document.querySelectorAll('.volume-bar').forEach(bar => {
+    const val = parseInt(bar.dataset.value || '5');
+    renderVolume(bar, val);
+  });
+
+  function renderVolume(bar, val) {
+    bar.dataset.value = val;
+    bar.innerHTML = '';
+    const segs = document.createElement('div');
+    segs.className = 'segments';
+    for (let i = 0; i < 10; i++) {
+      const s = document.createElement('div');
+      s.className = 'seg' + (i < val ? ' filled' : '') + (i >= 7 && i < val ? ' high' : '');
+      s.addEventListener('click', e => { e.stopPropagation(); renderVolume(bar, i + 1); });
+      segs.appendChild(s);
+    }
+    const pct = document.createElement('div');
+    pct.className = 'volume-percent';
+    pct.textContent = (val * 10) + '%';
+    bar.appendChild(segs);
+    bar.appendChild(pct);
+  }
+
+  // Category switching
+  document.querySelectorAll('.category').forEach(cat => {
+    cat.addEventListener('click', () => {
+      document.querySelectorAll('.category').forEach(c => c.classList.remove('active'));
+      cat.classList.add('active');
+      const target = cat.dataset.cat;
+      document.querySelectorAll('.panel-content').forEach(p => p.classList.remove('active'));
+      document.querySelector(`.panel-content[data-panel="${target}"]`).classList.add('active');
+    });
+  });
+
+  // Toggle behaviour
+  document.addEventListener('click', e => {
+    if (e.target.classList.contains('toggle')) {
+      const t = e.target;
+      if (t.classList.contains('on')) {
+        t.classList.remove('on'); t.classList.add('off'); t.textContent = 'OFF';
+      } else {
+        t.classList.remove('off'); t.classList.add('on'); t.textContent = 'ON';
+      }
+    }
+  });
+
+  // Dropdown arrows
+  document.querySelectorAll('.dropdown').forEach(dd => {
+    const arrows = dd.querySelectorAll('.arrow');
+    const valueEl = dd.querySelector('.value');
+    const options = JSON.parse(dd.dataset.options);
+    arrows[0].addEventListener('click', () => {
+      let i = parseInt(dd.dataset.index);
+      i = (i - 1 + options.length) % options.length;
+      dd.dataset.index = i;
+      valueEl.textContent = options[i];
+    });
+    arrows[1].addEventListener('click', () => {
+      let i = parseInt(dd.dataset.index);
+      i = (i + 1) % options.length;
+      dd.dataset.index = i;
+      valueEl.textContent = options[i];
+    });
+  });
+
+  // Keyboard navigation between categories
+  document.addEventListener('keydown', e => {
+    const cats = [...document.querySelectorAll('.category')];
+    const activeIdx = cats.findIndex(c => c.classList.contains('active'));
+    if (e.key === 'Tab' || e.key === 'w' || e.key === 'W' || e.key === 'ArrowUp') {
+      e.preventDefault();
+      cats[(activeIdx - 1 + cats.length) % cats.length].click();
+    } else if (e.key === 's' || e.key === 'S' || e.key === 'ArrowDown') {
+      e.preventDefault();
+      cats[(activeIdx + 1) % cats.length].click();
+    }
+  });
+</script>
+</body>
+</html>

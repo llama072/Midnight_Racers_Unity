@@ -666,6 +666,7 @@ GameObject:
   - component: {fileID: 1619373996}
   - component: {fileID: 1619373998}
   - component: {fileID: 1619373997}
+  - component: {fileID: 1619373999}
   m_Layer: 5
   m_Name: Car
   m_TagString: Untagged
@@ -730,6 +731,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1619373995}
   m_CullTransparentMesh: 1
+--- !u!114 &1619373999
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1619373995}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39289dfea4ce2444198b2e14054ac0bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  carList:
+  - {fileID: 11400000, guid: 1a561a117ef20464c9ccb4fa8217657f, type: 2}
+  - {fileID: 11400000, guid: 68c5e35e62a6be64a963a52f66897502, type: 2}
+  - {fileID: 11400000, guid: d855360c1b9839f40ba7e2d82cb68d83, type: 2}
+  - {fileID: 11400000, guid: 39dbbdb2c9bdd5f4b844d0107a711dbb, type: 2}
+  uniformSizing: 1
+  uniformHeight: 340
+  extraYOffset: -5
 --- !u!1 &1929612775
 GameObject:
   m_ObjectHideFlags: 0
