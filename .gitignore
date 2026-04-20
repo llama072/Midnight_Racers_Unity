@@ -1,8 +1,54 @@
+# Unity generated
 [Ll]ibrary/
 [Tt]emp/
 [Oo]bj/
 [Bb]uild/
 [Bb]uilds/
 [Ll]ogs/
+[Uu]ser[Ss]ettings/
 [Mm]emoryCaptures/
+[Rr]ecordings/
+
+# Autogenerált by Unity, nem kell commitolni
+*.csproj
+*.unityproj
+*.sln
+*.suo
+*.tmp
+*.user
+*.userprefs
+*.pidb
+*.booproj
+*.svd
+*.pdb
+*.mdb
+*.opendb
+*.VC.db
+
+# IDE / Editor
 .vs/
+.vscode/
+.idea/
+.consulo/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Unity Crashlytics / Asset store
+sysinfo.txt
+*.apk
+*.aab
+*.unitypackage
+*.app
+[Aa]ssets/[Aa]ssetStoreTools*
+[Aa]ssets/[Pp]lugins/[Ee]ditor/[Jj]et[Bb]rains*
+
+# Backend / Node
+node_modules/
+.env
+.env.*
+*.env
+
+# Munka / belső (ne pusholjuk)
+_JAVITASOK/

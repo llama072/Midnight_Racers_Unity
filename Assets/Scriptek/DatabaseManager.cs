@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using UnityEngine.Networking;
 using System.Collections;
 using System.Text;
@@ -25,12 +25,30 @@ public class SaveScoreRequest
     public int score;
 }
 
+[System.Serializable]
+public class UserStatsResponse
+{
+    public bool success;
+    public string username;
+    public string firstName;
+    public string lastName;
+    public string email;
+    public int bestScore;
+    public int totalRaces;
+    public int averageScore;
+    public int rank;
+    public string message;
+}
+
 public class DatabaseManager : MonoBehaviour
 {
     public static DatabaseManager instance;
     public static int LoggedInUserId = -1;
+    public static string LoggedInUsername = "";
 
-    private string baseUrl = "http://127.0.0.1:3000";
+    public static bool IsLoggedIn => LoggedInUserId != -1;
+
+    private string baseUrl = "https://nodejs216.dszcbaross.edu.hu";
 
     void Awake()
     {
@@ -46,7 +64,9 @@ public class DatabaseManager : MonoBehaviour
     }
 
     public delegate void LoginCallback(bool success);
+    public delegate void StatsCallback(UserStatsResponse stats);
 
+    // ---- LOGIN ----
     public void Login(string username, string password, LoginCallback callback)
     {
         StartCoroutine(LoginRoutine(username, password, callback));
@@ -81,7 +101,8 @@ public class DatabaseManager : MonoBehaviour
             if (res != null && res.success)
             {
                 LoggedInUserId = res.userId;
-                Debug.Log("LOGIN OK 🔥 ID: " + LoggedInUserId);
+                LoggedInUsername = username;   // Unity-oldalon eltároljuk a nevet is
+                Debug.Log("LOGIN OK 🔥 ID: " + LoggedInUserId + " (" + username + ")");
                 callback(true);
             }
             else
@@ -97,6 +118,15 @@ public class DatabaseManager : MonoBehaviour
         }
     }
 
+    // ---- LOGOUT ----
+    public void Logout()
+    {
+        LoggedInUserId = -1;
+        LoggedInUsername = "";
+        Debug.Log("LOGOUT — user cleared.");
+    }
+
+    // ---- SCORE MENTÉS ----
     public void SaveScore(int score)
     {
         if (LoggedInUserId == -1)
@@ -137,6 +167,55 @@ public class DatabaseManager : MonoBehaviour
         else
         {
             Debug.LogError("SAVE ERROR: " + request.error);
+        }
+    }
+
+    // ---- USER STATS LEKÉRÉSE ----
+    public void GetUserStats(StatsCallback callback)
+    {
+        if (LoggedInUserId == -1)
+        {
+            Debug.LogWarning("Nincs login, stats nem kérhető.");
+            callback?.Invoke(null);
+            return;
+        }
+        StartCoroutine(GetUserStatsRoutine(LoggedInUserId, callback));
+    }
+
+    IEnumerator GetUserStatsRoutine(int userId, StatsCallback callback)
+    {
+        string url = baseUrl + "/user-stats/" + userId;
+        UnityWebRequest request = UnityWebRequest.Get(url);
+
+        yield return request.SendWebRequest();
+
+        Debug.Log("STATS RAW: " + request.downloadHandler.text);
+
+        if (request.result == UnityWebRequest.Result.Success)
+        {
+            try
+            {
+                UserStatsResponse res = JsonUtility.FromJson<UserStatsResponse>(request.downloadHandler.text);
+                if (res != null && res.success)
+                {
+                    callback?.Invoke(res);
+                }
+                else
+                {
+                    Debug.LogWarning("Stats fail: " + (res != null ? res.message : "null"));
+                    callback?.Invoke(null);
+                }
+            }
+            catch (System.Exception ex)
+            {
+                Debug.LogError("Stats parse hiba: " + ex.Message);
+                callback?.Invoke(null);
+            }
+        }
+        else
+        {
+            Debug.LogError("STATS NETWORK ERROR: " + request.error);
+            callback?.Invoke(null);
         }
     }
 }

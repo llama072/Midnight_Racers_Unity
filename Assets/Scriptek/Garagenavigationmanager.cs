@@ -6,7 +6,7 @@ using TMPro;
 public class GarageNavigationManager : MonoBehaviour
 {
     [Header("Scene Nevek")]
-    [SerializeField] private string playSceneName = "DriveSelect";
+    [SerializeField] private string playSceneName = "Drive Select";
     [SerializeField] private string carSelectSceneName = "Garage";
     [SerializeField] private string settingsSceneName = "Settings";
     [SerializeField] private string mainMenuSceneName = "MainMenu";
@@ -109,8 +109,13 @@ public class GarageNavigationManager : MonoBehaviour
             yield return new WaitForSeconds(0.06f);
         }
         string scene = GetSceneName(index);
-        if (!string.IsNullOrEmpty(scene) && SceneTransitionManager.Instance != null)
-            SceneTransitionManager.Instance.LoadScene(scene);
+        if (!string.IsNullOrEmpty(scene))
+        {
+            if (SceneTransitionManager.Instance != null)
+                SceneTransitionManager.Instance.LoadScene(scene);
+            else
+                UnityEngine.SceneManagement.SceneManager.LoadScene(scene);
+        }
         isTransitioning = false;
     }
 
@@ -218,7 +223,8 @@ public class GarageNavigationManager : MonoBehaviour
             colors.pressedColor = new Color(0.6f, 0.2f, 1f, 0.3f);
             btn.colors = colors;
             int cap = i;
-            btn.onClick.AddListener(() => {
+            btn.onClick.AddListener(() =>
+            {
                 currentIndex = cap;
                 targetOffset = currentIndex * itemSpacing;
             });
