@@ -88,15 +88,12 @@ Midnight_Racers_Unity/
 
 ## 🎮 Irányítás
 
-| Művelet | Billentyűzet | Gamepad |
-|---------|--------------|---------|
-| Gyorsítás | `W` / `↑` | RT / R2 |
-| Fékezés / hátramenet | `S` / `↓` | LT / L2 |
-| Kormányzás | `A` `D` / `←` `→` | Bal stick |
-| Nitro / Boost | `Shift` | A / X |
-| Kézifék | `Space` | B / O |
-| Kamera váltás | `C` | Y / □ |
-| Pause | `Esc` | Start |
+| Művelet | Billentyűzet |
+|---------|--------------|
+| Gyorsítás | `W` / `↑`| 
+| Fékezés / hátramenet | `S` / `↓` |
+| Kormányzás | `A` `D` / `←` `→` |
+| Pause | `Esc` | Start  |
 
 ## 🚀 Telepítés és futtatás
 
