@@ -39,40 +39,6 @@ A játék **pixel art** stílusban készült, **Unity 2022 LTS** alapokon, **C#*
 - 🎵 **Synthwave soundtrack** — eredeti zene a hangulathoz
 - 💾 **Local save** — beállítások, progress, legjobb körök
 
-## 🖼️ Képernyőképek
-
-<table>
-  <tr>
-    <td align="center" width="50%">
-      <img src="./Screenshots/menu.png" alt="Main menu" /><br>
-      <sub><b>🏠 Főmenü</b></sub>
-    </td>
-    <td align="center" width="50%">
-      <img src="./Screenshots/garage.png" alt="Garage" /><br>
-      <sub><b>🔧 Garázs — autóválasztás</b></sub>
-    </td>
-  </tr>
-  <tr>
-    <td align="center">
-      <img src="./Screenshots/race-night.png" alt="Race at night" /><br>
-      <sub><b>🌙 Éjszakai verseny</b></sub>
-    </td>
-    <td align="center">
-      <img src="./Screenshots/race-downtown.png" alt="Downtown race" /><br>
-      <sub><b>🏙️ Belváros pálya</b></sub>
-    </td>
-  </tr>
-  <tr>
-    <td align="center">
-      <img src="./Screenshots/hud.png" alt="In-game HUD" /><br>
-      <sub><b>📊 In-game HUD (sebesség, idő, nitro)</b></sub>
-    </td>
-    <td align="center">
-      <img src="./Screenshots/leaderboard.png" alt="Leaderboard" /><br>
-      <sub><b>🏆 Leaderboard képernyő</b></sub>
-    </td>
-  </tr>
-</table>
 
 ## 🛠️ Használt technológiák
 
