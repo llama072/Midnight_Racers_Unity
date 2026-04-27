@@ -37,7 +37,6 @@ A játék **pixel art** stílusban készült, **Unity 2022 LTS** alapokon, **C#*
 - 🏆 **Online leaderboard** — backendre felküldött scoreok, top játékosok listája
 - 👤 **Login a játékban** — ugyanazzal a fiókkal, mint a weboldalon (JWT auth)
 - 🎵 **Synthwave soundtrack** — eredeti zene a hangulathoz
-- 🎮 **Gamepad támogatás** — Xbox / PlayStation kontrollerekkel is játszható
 - 💾 **Local save** — beállítások, progress, legjobb körök
 
 ## 🖼️ Képernyőképek
