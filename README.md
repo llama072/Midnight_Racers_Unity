@@ -133,14 +133,6 @@ A játék vizuális világa a 80-as évek synthwave / outrun esztétikájához n
 - 🔤 **Tipográfia** — Orbitron a UI-on, pixel font a HUD-on
 - 💎 **CRT shader effekt** — opcionálisan bekapcsolható retro hangulathoz
 
-## 🐛 Ismert hibák / TODO
-
-- [ ] AI ellenfelek finomhangolása nehezebb pályákon
-- [ ] Több pálya hozzáadása (Harbor, Mountain, Industrial)
-- [ ] Multiplayer (split-screen lokálisan, később online)
-- [ ] Replay rendszer
-- [ ] Achievement / kihívás rendszer
-- [ ] Linux és Mac build tesztelése
 
 ## 👥 Csapat
 
