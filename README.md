@@ -97,33 +97,6 @@ Midnight_Racers_Unity/
 
 ## 🚀 Telepítés és futtatás
 
-### Előfeltételek
-
-- **Unity Hub** legfrissebb verzió
-- **Unity 2022.3 LTS** (a projekt ezzel készült)
-- **Git** + **Git LFS** (a nagyobb asseteknek)
-- **Visual Studio 2022** vagy **Rider** (script szerkesztéshez)
-
-### Lépések fejlesztőknek
-
-```bash
-# 1. Klónozd a repót (LFS-sel együtt)
-git lfs install
-git clone https://github.com/llama072/Midnight_Racers_Unity.git
-cd Midnight_Racers_Unity
-
-# 2. Nyisd meg Unity Hubban
-#    - Open → Add project from disk → válaszd ki a klónozott mappát
-#    - Unity 2022.3 LTS-t használj
-
-# 3. Várd meg, hogy a Unity importálja az asseteket
-#    (első indításkor 5–10 perc is lehet)
-
-# 4. Nyisd meg a MainMenu.unity scene-t
-#    Assets/Scenes/MainMenu.unity
-
-# 5. Nyomd meg a Play gombot ▶
-```
 
 ### Játékosoknak (kész build)
 
@@ -137,40 +110,7 @@ A legfrissebb buildet a [Midnight Racers weboldal Download oldaláról](https://
 5. Nyomd a gázt 🏁
 ```
 
-### Build készítése Unityből
 
-```
-File → Build Settings
-   ↓
-Platform: PC, Mac & Linux Standalone
-Target Platform: Windows
-Architecture: x86_64
-   ↓
-Build → válaszd a /Builds mappát
-```
-
-## ⚙️ Konfiguráció
-
-A backend URL és egyéb beállítások a `Assets/Scripts/Network/ApiConfig.cs` fájlban találhatók:
-
-```csharp
-public static class ApiConfig
-{
-    // Fejlesztéshez:
-    public const string BASE_URL_DEV = "http://localhost:3000";
-
-    // Élesben:
-    public const string BASE_URL_PROD = "https://nodejs216.dszcbaross.edu.hu";
-
-#if UNITY_EDITOR
-    public static string BaseUrl => BASE_URL_DEV;
-#else
-    public static string BaseUrl => BASE_URL_PROD;
-#endif
-}
-```
-
-> 💡 Ha saját szerverre szeretnéd kötni a játékot, csak állítsd át a fenti konstansokat.
 
 ## 🔌 Backend API végpontok (a játékból hívva)
 
