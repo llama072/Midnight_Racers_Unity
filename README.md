@@ -120,17 +120,6 @@ A legfrissebb buildet a [Midnight Racers weboldal Download oldaláról](https://
 | `GET`  | `/leaderboard` | Top játékosok listája |
 | `GET`  | `/profil-adatok` | Játékos profil adatok |
 
-## 🎨 Dizájn és hangulat
-
-A játék vizuális világa a 80-as évek synthwave / outrun esztétikájához nyúl vissza:
-
-- 🌃 **Pixel art grafika** — kézzel rajzolt sprite-ok, ~32×32 / 64×64 felbontás
-- 🌈 **Neon paletta** — cián, magenta, lila, mély kék árnyalatok
-- 🌙 **Éjszakai város** — csillagos égbolt, neon táblák, vizes aszfalt tükröződések
-- 🎵 **Synthwave OST** — eredeti zenei aláfestés a versenyekhez
-- 🔤 **Tipográfia** — Orbitron a UI-on, pixel font a HUD-on
-- 💎 **CRT shader effekt** — opcionálisan bekapcsolható retro hangulathoz
-
 
 ## 👥 Csapat
 
