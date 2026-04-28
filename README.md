@@ -33,10 +33,8 @@ A játék **pixel art** stílusban készült, **Unity 2022 LTS** alapokon, **C#*
 - 🌃 **Éjszakai city pályák** — neonfényes utcák, pixel art környezet
 - 🕹️ **Klasszikus arcade racing** — könnyen tanulható, nehezen mestelhető irányítás
 - 🏁 **Time trial mód** — versenyezz az óra ellen
-- 💨 **Nitro / boost rendszer** — gyorsulás kritikus pillanatokban
 - 🏆 **Online leaderboard** — backendre felküldött scoreok, top játékosok listája
 - 👤 **Login a játékban** — ugyanazzal a fiókkal, mint a weboldalon (JWT auth)
-- 🎵 **Synthwave soundtrack** — eredeti zene a hangulathoz
 - 💾 **Local save** — beállítások, progress, legjobb körök
 
 
