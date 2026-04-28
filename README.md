@@ -50,6 +50,14 @@ A játék **pixel art** stílusban készült, **Unity 2022 LTS** alapokon, **C#*
 | **Backend kommunikáció** | `UnityWebRequest` + Bearer token (JWT) |
 | **Verziókezelés** | Git + Git LFS (a nagyobb asseteknek) |
 
+
+## 🖼️ Képernyőképek
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/9a693eb0-15d6-47c0-9c66-6c236a95288e" />
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/84be504c-2669-4468-a93e-2483d24486f4" />
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/8207de2f-7476-4e8f-be14-4ec88ec23e12" />
+
+
+
 ## 📂 Mappastruktúra
 
 ```
